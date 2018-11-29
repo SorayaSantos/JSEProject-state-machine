@@ -1,0 +1,13 @@
+package io.altar.textInterface;
+
+public class InitialMenu {
+	@Override
+	public int execute(){
+		System.out.println("1) List produts");
+		System.out.println("2) List shelves");
+		System.out.println("3) Quit");
+		int [] opcoesValidas = {1,2,3};
+		
+		return scannerUtils.getValidIntFromScanner("Por favor selecione as seguintes opcoes ", opcoesValidas);
+	}
+}
