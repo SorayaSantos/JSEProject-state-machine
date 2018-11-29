@@ -1,6 +1,6 @@
 package io.altar.textInterface;
 
-public class InitialMenu {
+public class InitialMenu implements State {
 	
 	@Override
 	public int execute(){
@@ -9,6 +9,6 @@ public class InitialMenu {
 		System.out.println("3) Quit");
 		int [] opcoesValidas = {1,2,3};
 		
-		return scannerUtils.getValidIntFromScanner("Por favor selecione as seguintes opcoes ", opcoesValidas);
+		return ScannerUtils.getValidIntFromScanner("Por favor selecione as seguintes opcoes ", opcoesValidas,true);
 	}
 }

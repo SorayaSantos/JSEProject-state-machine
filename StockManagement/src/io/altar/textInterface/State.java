@@ -1,7 +1,6 @@
 package io.altar.textInterface;
 
-public class State {
+public interface State {
 	public static final ScannerUtils scannerUtils = new ScannerUtils();
 	public int execute();
-
 }
