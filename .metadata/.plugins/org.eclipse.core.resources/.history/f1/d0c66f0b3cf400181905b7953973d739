@@ -1,0 +1,38 @@
+package io.altar.textInterface;
+
+import io.altar.textInterface.states.InitialMenu;
+import io.altar.textInterface.states.MenuProduct;
+import io.altar.textInterface.states.MenuShelf;
+import io.altar.textInterface.states.RemoveProduct;
+import io.altar.textInterface.states.RemoveShelf;
+import io.altar.textInterface.states.ConsultProduct;
+import io.altar.textInterface.states.ConsultShelf;
+import io.altar.textInterface.states.CreateProduct;
+import io.altar.textInterface.states.CreateShelf;
+import io.altar.textInterface.states.EditProduct;
+import io.altar.textInterface.states.EditShelf;
+
+public class FSM {
+	public State[] states = {
+			new InitialMenu(),				
+			new MenuProduct(),		
+			new MenuShelf(),
+			new CreateProduct(),
+			new CreateShelf(),
+			new EditProduct(),
+			new EditShelf(),
+			new ConsultProduct(),
+			new ConsultShelf(),
+			new RemoveProduct(),
+			new RemoveShelf(),
+
+			
+			};	
+	
+	public int currentState = 0;
+
+	public int[][] trasitionsMatrix={	{1,2},		//state 0
+			{0,0,0,0,0}, 	//state 1
+			{0,0,0,0,0}};	//state 2;
+	
+}

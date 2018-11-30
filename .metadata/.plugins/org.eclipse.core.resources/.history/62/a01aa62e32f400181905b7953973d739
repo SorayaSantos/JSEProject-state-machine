@@ -1,0 +1,26 @@
+package io.altar.textInterface.states;
+
+import java.util.Collection;
+
+import io.altar.model.Product;
+import io.altar.textInterface.ScannerUtils;
+import io.altar.textInterface.State;
+import io.altar.textInterface.TextInterface;
+
+public class MenuProduct implements State {
+	
+	@Override
+	public int execute() {
+		System.out.println("Please select one of the follow options: ");
+		System.out.println("");
+		System.out.println("1) Create a new product");
+		System.out.println("2) Edit a existing product");
+		System.out.println("3) Consult product details");
+		System.out.println("4) Remove a product");
+		System.out.println("5) Return to the initial menu");
+		
+		Collection<Product> values = TextInterface.productRepository1.ConsultEntities();
+
+		return ScannerUtils.getValidIntFromScanner("Por favor selecione as seguintes opcoes ", opcoesValidas,true);
+	}
+}

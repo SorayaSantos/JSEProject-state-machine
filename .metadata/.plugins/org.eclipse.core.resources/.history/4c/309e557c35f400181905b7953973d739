@@ -1,0 +1,36 @@
+package io.altar.textInterface.states;
+
+import io.altar.textInterface.State;
+import java.util.Collection;
+import io.altar.model.Shelf;
+import io.altar.textInterface.TextInterface;
+
+
+public class CreateShelf {
+	public class CreateProduct implements State {
+		@Override
+		public int execute() {
+			ArrayList<Shelf> shelvesList = new ArrayList<Shelf>();
+
+			long capacity = ScannerUtils.getLongFromScanner("Please insert the capacity: ", false);
+			long productId = ScannerUtils.findIdProduct("Please insert the product id: ", false);
+
+			if (productId == (long) -2) {
+				ConsultProducts();
+			}
+			else{
+
+			double price = ScannerUtils.getDoubleFromScanner("Please insert the rent price: ", false);
+
+			Product product = productRepository1.ConsultEntityById(productId);
+			
+					Shelf shelf = new Shelf(capacity, product, price);
+					shelvesList = product.getShelves_list();
+					shelvesList.add(shelf);
+					product.setShelves_list(shelvesList);
+					shelfRepository1.CreateEntities(shelf);
+					
+			ConsultShelves();}
+		}
+	}
+}

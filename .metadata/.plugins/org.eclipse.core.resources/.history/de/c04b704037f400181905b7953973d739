@@ -1,0 +1,56 @@
+package io.altar.textInterface.states;
+
+import io.altar.textInterface.State;
+import io.altar.textInterface.TextInterface;
+import io.altar.textInterface.ScannerUtils;
+import io.altar.model.Product;
+import java.util.ArrayList;
+import io.altar.model.Shelf;
+
+public class EditShelf implements State {
+
+	@Override
+	public int execute() {
+		ArrayList<Shelf> actualShelvesList = new ArrayList<Shelf>();
+		long shelfId = ScannerUtils.findIdShelf("Please insert the id of the shelf to be changed: ", false);
+
+		if (shelfId == (long) -2) {
+			return 2;
+		}else{
+		
+		Shelf shelfToBeChanged = shelfRepository1.ConsultEntityById(shelfId);
+		long actualCapacity = shelfToBeChanged.getCapacity();
+		Product actualProduct = shelfToBeChanged.getProduct();
+		long actualIdProduct = actualProduct.getId();
+		double actualPrice = shelfToBeChanged.getPrice();
+		actualShelvesList = actualProduct.getShelves_list();
+
+		long capacity = ScannerUtils.getLongFromScanner("Please insert the new shelf capacity:            Actual capacity: (" + actualCapacity + ")", true);
+		long productId = ScannerUtils.findIdProduct("Please insert new id of the product to be stored:            Actual id: (" + actualIdProduct + ")", true);
+		if (productId == (long) -2) {
+			return 1;
+		}else{
+		double price = ScannerUtils.getDoubleFromScanner("Please insert the new rent price (diary):            Actual rent price: (" + actualPrice + ")", true);
+					
+		if (capacity  != (long) -1) {
+			shelfToBeChanged.setCapacity(capacity);
+		}
+		if (productId != (long) -1) {
+			Product product = productRepository1.ConsultEntityById(productId);
+			shelfToBeChanged.setProduct(product);
+			ArrayList<Shelf> shelvesList = product.getShelves_list();
+			shelvesList.add(shelfToBeChanged);
+			product.setShelves_list(shelvesList);
+		}
+		if (price  != (long) -1) {
+			shelfToBeChanged.setPrice(price);
+		}
+		
+		actualShelvesList.remove(shelfToBeChanged);
+		actualProduct.setShelves_list(actualShelvesList);
+
+		shelfRepository1.EditEntityById(shelfId, shelfToBeChanged );
+	
+		ConsultShelves();
+}}
+}}

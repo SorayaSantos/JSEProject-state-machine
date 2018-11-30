@@ -1,0 +1,22 @@
+package io.altar.textInterface.states;
+
+import io.altar.textInterface.State;
+import io.altar.textInterface.ScannerUtils;
+import java.util.ArrayList;
+
+import io.altar.model.Shelf;
+
+	public class CreateProduct implements State {
+		@Override
+		public int execute() {
+			ArrayList<Shelf> shelvesList = new ArrayList<Shelf>();
+
+			System.out.println("Create Product");
+			int iva = ScannerUtils.getValidIntFromScanner("Please insert the iva: ", ivas, false);
+			double discount = ScannerUtils.getValidDoubleFromScanner("Please insert the discount: ", 100, false);
+			double pvp = ScannerUtils.getDoubleFromScanner("Please insert the pvp: ", false);
+
+			Product product = new Product(shelvesList, discount, iva, pvp);
+			productRepository1.CreateEntities(product);
+		}
+}

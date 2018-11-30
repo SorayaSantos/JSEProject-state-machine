@@ -1,0 +1,30 @@
+package io.altar.textInterface.states;
+
+import io.altar.textInterface.State;
+import io.altar.textInterface.ScannerUtils;
+import io.altar.textInterface.TextInterface;
+import io.altar.model.Product;
+
+public class RemoveProduct implements State {
+
+	@Override
+	public int execute() {
+		long shelfId = ScannerUtils.findIdShelf("Please insert the id of the shelf to be changed: ", false);
+
+		if (shelfId == (long) -2) {
+			ConsultShelves();
+		}else{
+			
+			Shelf shelf = shelfRepository1.ConsultEntityById(shelfId);
+			Product product = shelf.getProduct();
+			ArrayList<Shelf> shelvesList = new ArrayList<Shelf>();
+			shelvesList = product.getShelves_list();
+
+			System.out.println("Remove shelf? Press enter to remove. ");
+			shelvesList.remove(shelf);
+			product.setShelves_list(shelvesList);
+			sc.nextLine();
+			shelfRepository1.RemoveEntityById(shelfId);
+			ConsultShelves();
+		
+}}

@@ -1,0 +1,21 @@
+package main;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		FSM fsm = new FSM();
+		int opcao = 0;
+
+		while (true) {
+			opcao = fsm.states[fsm.currentState].execute();
+
+			if (fsm.currentState == 0 && opcao == 3) {
+				break;
+			}
+			fsm.currentState = fsm.trasitionsMatrix[fsm.currentState][opcao - 1];
+		}
+
+	}
+
+}

@@ -1,0 +1,14 @@
+package io.altar.textInterface.states;
+
+import java.util.Collection;
+import io.altar.textInterface.TextInterface;
+import io.altar.model.Product;
+
+public class ListProducts implements State{
+	
+	Collection<Product> values = TextInterface.productRepository1.ConsultEntities();
+
+	for (Product product : values) {
+		System.out.println(product);
+	}
+}

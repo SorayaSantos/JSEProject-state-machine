@@ -1,28 +1,44 @@
 package io.altar.textInterface;
 
-public class FSM {
-	private State[] states = {
-			new InitialMenu(),				//0
-			new MenuProduct(),		//1
-			new MenuShelf()};	//2
-	
-	private int transitionsMatrix [][] = {	{1,2},		//state 0
-											{0,0,0,0,0}, 	//state 1
-											{0,0,0,0,0}};	//state 2
-	
-	private int currentState = 0;
-	
-	public static void main(String[] args) {
-		
-		FSM fsm = new FSM();
-		int opcao = 0;
-		
-		while(true){
-			opcao = fsm.states[fsm.currentState].execute();
-			if (fsm.currentState==0 && opcao==3){
-				break;}
-			fsm.currentState=fsm.transitionsMatrix[fsm.currentState][opcao-1];
-		}
+import io.altar.textInterface.states.InitialMenu;
+import io.altar.textInterface.states.MenuProduct;
+import io.altar.textInterface.states.MenuShelf;
+import io.altar.textInterface.states.RemoveProduct;
+import io.altar.textInterface.states.RemoveShelf;
+import io.altar.textInterface.states.ConsultProduct;
+import io.altar.textInterface.states.ConsultShelf;
+import io.altar.textInterface.states.CreateProduct;
+import io.altar.textInterface.states.CreateShelf;
+import io.altar.textInterface.states.EditProduct;
+import io.altar.textInterface.states.EditShelf;
 
-	}
+public class FSM {
+	public State[] states = {
+			new InitialMenu(),	//0			
+			new MenuProduct(),	//1	
+			new MenuShelf(), //2
+			new CreateProduct(),//3
+			new CreateShelf(),//4
+			new EditProduct(),//5
+			new EditShelf(),//6
+			new ConsultProduct(),//7
+			new ConsultShelf(),//8
+			new RemoveProduct(),//9
+			new RemoveShelf(),//10
+			};	
+	
+	public int currentState = 0;
+
+	public int[][] trasitionsMatrix={	{1,2},	//0	
+			{3,5,7,9,0},//1
+			{4,6,9,10,0},//2
+			{1},//3
+			{1,2},//4
+			{1},//5
+			{1,2},//6
+			{0,1},//7
+			{0,2},//8
+			{1},//9
+			{2}};//	10
+	
 }

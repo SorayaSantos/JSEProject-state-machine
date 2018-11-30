@@ -1,0 +1,14 @@
+package io.altar.textInterface.states;
+
+import java.util.Collection;
+
+import io.altar.model.Shelf;
+import io.altar.textInterface.TextInterface;
+
+public class ListShelves implements State {
+	Collection<Shelf> values = TextInterface.shelfRepository1.ConsultEntities();
+
+	for (Shelf shelf : values) {
+		System.out.println(shelf);
+	}
+}

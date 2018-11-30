@@ -1,0 +1,41 @@
+package io.altar.textInterface.states;
+
+import io.altar.textInterface.ScannerUtils;
+import io.altar.textInterface.State;
+
+
+public class MenuProduct implements State {
+	
+	@Override
+	public int execute() {
+		System.out.println("Please select one of the follow options: ");
+		System.out.println("");
+		System.out.println("1) Create a new product");
+		System.out.println("2) Edit a existing product");
+		System.out.println("3) Consult product details");
+		System.out.println("4) Remove a product");
+		System.out.println("5) Return to the initial menu");
+
+		
+		int [] opcoesValidas = {1,2,3,4,5};
+		
+		int choice= ScannerUtils.getValidIntFromScanner("Por favor selecione as seguintes opcoes ", opcoesValidas,true);
+	
+	if (choice==1) {
+		return choice+1;
+	}
+	if (choice==2) {
+		return choice+3;
+	}
+	if (choice==3) {
+		return choice+4;
+	}
+	if (choice==4) {
+		return choice+5;
+	}
+	else {
+		return choice+6;
+	}
+	
+	}
+}

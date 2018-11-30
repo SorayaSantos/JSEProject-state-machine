@@ -1,0 +1,19 @@
+package io.altar.textInterface.states;
+
+import io.altar.textInterface.State;
+
+
+public class ConsultProduct implements State {
+
+	@Override
+	public int execute() {
+		long productId = ScannerUtils.findIdProduct("Please insert the id of the product to be changed: ", false);
+		if (productId == (long) -2) {
+			ConsultProducts();
+		}else{
+
+			System.out.println(productRepository1.ConsultEntityById(productId));
+			BeginMenu();
+		}
+	}
+}

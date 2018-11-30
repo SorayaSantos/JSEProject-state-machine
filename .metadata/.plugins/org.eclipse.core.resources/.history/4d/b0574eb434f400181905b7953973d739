@@ -1,0 +1,10 @@
+package io.altar.textInterface.states;
+
+import io.altar.textInterface.State;
+
+	public class CreateProduct implements State {
+		@Override
+		public int execute() {
+			
+		}
+}

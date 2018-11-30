@@ -1,0 +1,15 @@
+package io.altar.textInterface;
+
+public class FSM {
+	private State[] states = {
+			new InitialMenu(),				//0
+			new MenuProduct(),		//1
+			new MenuShelf()};	//2
+	
+	private int transitionsMatrix [][] = {	{1,2},		//state 0
+											{0,0,0,0,0}, 	//state 1
+											{0,0,0,0,0}};	//state 2
+	
+	private int currentState = 0;
+	
+}

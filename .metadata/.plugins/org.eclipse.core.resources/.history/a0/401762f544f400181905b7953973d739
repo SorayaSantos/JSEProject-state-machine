@@ -1,0 +1,19 @@
+package io.altar.textInterface.states;
+
+import java.util.Collection;
+import io.altar.textInterface.TextInterface;
+import io.altar.model.Product;
+import io.altar.textInterface.State;
+
+public class ListProducts implements State {
+
+	@Override
+	public int execute() {
+		Collection<Product> values = TextInterface.productRepository1.ConsultEntities();
+
+		for (Product product : values) {
+			System.out.println(product);
+		}
+		return 1;
+	}
+}
