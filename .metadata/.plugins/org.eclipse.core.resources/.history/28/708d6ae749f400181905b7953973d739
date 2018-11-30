@@ -14,7 +14,7 @@ public class RemoveShelf implements State {
 
 	@Override
 	public int execute() {
-		long shelfId = ScannerUtils.findIdShelf("Please insert the id of the shelf to be erased: ", false);
+		long shelfId = ScannerUtils.findIdShelf("Please insert the id of the shelf to be changed: ", false);
 
 		if (shelfId == (long) -2) {
 			return 1;

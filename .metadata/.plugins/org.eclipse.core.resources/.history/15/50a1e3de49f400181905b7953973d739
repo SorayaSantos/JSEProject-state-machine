@@ -10,7 +10,7 @@ public class ConsultShelf implements State {
 	@Override
 	public int execute() {		
 	
-		long shelfId = ScannerUtils.findIdShelf("Please insert the id of the shelf: ", false);
+		long shelfId = ScannerUtils.findIdShelf("Please insert the id of the shelf to be changed: ", false);
 
 	if (shelfId == (long) -2) {
 		return 2;
